@@ -3,12 +3,14 @@
 import { useState, useRef } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
+import Image from "next/image"
 
 interface Memory {
   id: number
   caption: string
   message: string
   color: string
+  image: string
 }
 
 // Placeholder memories - these would be replaced with actual photos
@@ -18,36 +20,42 @@ const memories: Memory[] = [
     caption: "Our First Photo Together",
     message: "This is where our story began. I remember feeling so nervous, but your smile made everything feel right.",
     color: "from-pink-200 to-rose-300",
+    image: "/gallery-section/1.jpg",
   },
   {
     id: 2,
     caption: "That Perfect Sunset",
     message: "Watching the sun set with you made me realize that the most beautiful views are the ones shared with you.",
     color: "from-orange-200 to-amber-300",
+    image: "/gallery-section/2.jpg",
   },
   {
     id: 3,
     caption: "Adventures Together",
     message: "Every adventure with you is my favorite adventure. You make ordinary moments extraordinary.",
     color: "from-purple-200 to-violet-300",
+    image: "/gallery-section/3.jpg",
   },
   {
     id: 4,
     caption: "Your Beautiful Smile",
     message: "This smile lights up my world. I fall in love with you more every time I see it.",
     color: "from-teal-200 to-cyan-300",
+    image: "/gallery-section/4.jpg",
   },
   {
     id: 5,
     caption: "Cozy Moments",
     message: "The quiet moments with you are my favorite. Just being together is enough.",
     color: "from-rose-200 to-pink-300",
+    image: "/gallery-section/5.jpg",
   },
   {
     id: 6,
     caption: "Celebrating Us",
     message: "Every celebration with you becomes a treasured memory. Here is to many more!",
     color: "from-amber-200 to-yellow-300",
+    image: "/gallery-section/6.jpg",
   },
 ]
 
@@ -95,8 +103,12 @@ function PolaroidCard({ memory, index, onClick }: { memory: Memory, index: numbe
         </div>
         
         {/* Image Frame */}
-        <div className={`aspect-square w-full bg-gradient-to-br ${memory.color} flex items-center justify-center overflow-hidden border border-black/5`}>
-          <ImageIcon className="w-8 h-8 md:w-12 md:h-12 text-black/20" />
+        <div className={`aspect-square w-full bg-gradient-to-br ${memory.color} flex items-center justify-center overflow-hidden border border-black/5 relative`}>
+          {memory.image ? (
+            <Image src={memory.image} alt={memory.caption} fill className="object-cover" />
+          ) : (
+            <ImageIcon className="w-8 h-8 md:w-12 md:h-12 text-black/20" />
+          )}
         </div>
         
       </motion.div>
@@ -156,10 +168,14 @@ function LightboxModal({
         </button>
 
         {/* Image placeholder */}
-        <div className={`aspect-[4/3] md:aspect-[3/2] bg-gradient-to-br ${memory.color}`}>
-          <div className="w-full h-full flex items-center justify-center">
-            <ImageIcon className="w-24 h-24 text-foreground/20" />
-          </div>
+        <div className={`aspect-[4/3] md:aspect-[3/2] bg-gradient-to-br ${memory.color} relative`}>
+          {memory.image ? (
+            <Image src={memory.image} alt={memory.caption} fill className="object-contain" />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <ImageIcon className="w-24 h-24 text-foreground/20" />
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>

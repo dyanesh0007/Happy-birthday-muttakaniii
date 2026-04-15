@@ -207,7 +207,7 @@ export function TimelineSection() {
                     className="relative z-10 flex justify-center py-2 md:py-4"
                   >
                     <div className="px-6 py-3 rounded-full bg-primary/5 border border-primary/20 backdrop-blur-sm text-primary font-medium italic text-center shadow-sm text-sm md:text-base max-w-xs md:max-w-md mx-4">
-                      "The rest is history full of love and chaos"
+                      "The rest is history full of love, lust and chaos"
                     </div>
                   </motion.div>
                 )}
