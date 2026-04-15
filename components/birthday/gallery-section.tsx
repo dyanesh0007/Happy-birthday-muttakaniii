@@ -11,6 +11,7 @@ interface Memory {
   message: string
   color: string
   image: string
+  position?: string
 }
 
 // Placeholder memories - these would be replaced with actual photos
@@ -21,6 +22,7 @@ const memories: Memory[] = [
     message: "This is where our story began. I remember feeling so nervous, but your smile made everything feel right.",
     color: "from-pink-200 to-rose-300",
     image: "/gallery-section/1.jpg",
+    position: "object-[center_15%]",
   },
   {
     id: 2,
@@ -105,7 +107,7 @@ function PolaroidCard({ memory, index, onClick }: { memory: Memory, index: numbe
         {/* Image Frame */}
         <div className={`aspect-square w-full bg-gradient-to-br ${memory.color} flex items-center justify-center overflow-hidden border border-black/5 relative`}>
           {memory.image ? (
-            <Image src={memory.image} alt={memory.caption} fill className="object-cover" />
+            <Image src={memory.image} alt={memory.caption} fill className={`object-cover ${memory.position || "object-center"}`} />
           ) : (
             <ImageIcon className="w-8 h-8 md:w-12 md:h-12 text-black/20" />
           )}
