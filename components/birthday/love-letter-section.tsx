@@ -12,7 +12,7 @@ const letterLines = [
   "Jollyyy ahh irungaa ongalaaa naa batharamaaa pathukuren endha kavalayum padatheenga",
   "",
   "Ongaluku pudichadha ellam pannunga",
-  "Indhey marii sirichineyy thona thona nu pesitu irukanum",
+  "Idhey marii sirichineyy thona thona nu pesitu irukanum",
   "Epayum ipdiye neenga neengala cutieee ah irukkanummmm cheryaaa",
   "",
   "Every moment with you feels like a dream I didn’t know could be this perfect.",
